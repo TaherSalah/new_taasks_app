@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
 import '../cubit/cubit.dart';
-import '../model/todo_model.dart';
+import '../../model/todo_model.dart';
 
 // class TodoTile extends StatelessWidget {
 //   const TodoTile({
@@ -136,7 +136,6 @@ class _CardBuilderState extends State<CardBuilder> {
                           isDone: false,
                           isArchived: true,
                         ));
-
                       }),
                       flex: 2,
                       backgroundColor: Colors.black,
@@ -148,13 +147,22 @@ class _CardBuilderState extends State<CardBuilder> {
                     SlidableAction(
                       onPressed: ((context) {
                         setState(() {
-
                           cubit.deleteTodo(widget.todoModel);
                         });
                       }),
                       backgroundColor: Colors.red,
                       flex: 3,
                       icon: Icons.delete_forever_outlined,
+                    ),
+                    SlidableAction(
+                      onPressed: ((context) {
+                        setState(() {
+                          cubit.deleteTodo(widget.todoModel);
+                        });
+                      }),
+                      backgroundColor: Colors.green,
+                      flex: 3,
+                      icon: Icons.edit,
                     )
                   ]),
                   child: ListTile(
@@ -176,10 +184,13 @@ class _CardBuilderState extends State<CardBuilder> {
                         Expanded(
                           child: Text(
                             widget.todoModel.date.toString(),
-                            style: Theme.of(context).textTheme.caption!.copyWith(
-                                color: Colors.grey,
-                                fontSize: 8,
-                                fontWeight: FontWeight.bold),
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption!
+                                .copyWith(
+                                    color: Colors.grey,
+                                    fontSize: 8,
+                                    fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
@@ -190,9 +201,10 @@ class _CardBuilderState extends State<CardBuilder> {
                         padding: EdgeInsets.only(bottom: 8.0),
                         child: Text(
                           textAlign: TextAlign.justify,
-                          maxLines: 2,
+                          maxLines:
+                              widget.todoModel.description.hashCode,
                           widget.todoModel.description,
-                          style: TextStyle(
+                          style: const TextStyle(
                               overflow: TextOverflow.ellipsis,
                               fontSize: 17,
                               color: Colors.black,

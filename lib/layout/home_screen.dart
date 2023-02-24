@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
-import '../cubit/cubit.dart';
-import '../cubit/states.dart';
+import '../shard/cubit/cubit.dart';
+import '../shard/cubit/states.dart';
 import '../model/todo_model.dart';
-import '../widgets/def_navBar.dart';
-
-
+import '../shard/widgets/def_navBar.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -38,7 +36,6 @@ class HomeScreen extends StatelessWidget {
                     icon: Icons.add,
                     text: 'Add',
                   ),
-
                   const GButton(
                     icon: Icons.archive_outlined,
                     text: 'Archived',
@@ -52,35 +49,14 @@ class HomeScreen extends StatelessWidget {
                   cubit.setBottomIndex(value);
                 },
                 currentIndex: cubit.currentIndex,
-                context: context)
-
-            // BottomNavigationBar(
-            //   currentIndex: cubit.currentIndex,
-            //   onTap: (index) {
-            //     cubit.setBottomIndex(index);
-            //   },
-            //   items: const [
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.home),
-            //       label: 'Home',
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.check),
-            //       label: 'Done',
-            //     ),
-            //     BottomNavigationBarItem(
-            //       icon: Icon(Icons.book),
-            //       label: 'Archived',
-            //     ),
-            //   ],
-            // ),
-            ,
+                context: context),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Text('Todo Details'),
+                    title: const Center(child: Text('Add Short Task !')),
+                    icon: Icon(Icons.add),
                     // To display the title it is optional
                     content: BlocBuilder<TodoCubit, TodoStates>(
                         builder: (context, state) {
@@ -128,6 +104,8 @@ class HomeScreen extends StatelessWidget {
                             ),
                             ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Colors.amber.withOpacity(0.8),
                                     maximumSize: Size.infinite),
                                 onPressed: () {
                                   cubit.setDate(context);
@@ -145,38 +123,50 @@ class HomeScreen extends StatelessWidget {
                       );
                     }),
                     actions: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            cubit.clearController();
-                          },
-                          child: const Text('Cancle')),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      ElevatedButton.icon(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              cubit.addTodo(TodoModel(
-                                title: cubit.titleController.text,
-                                description: cubit.descriptionController.text,
-                                date: cubit.initalDate,
-                                isDone: false,
-                                isArchived: false,
-                              ));
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content:
-                                    Text('${cubit.titleController.text} added'),
-                                backgroundColor: Colors.green,
-                              ));
-                              Navigator.pop(context);
+                     Row(
+                       children: [
+                         ElevatedButton.icon(
+                             style: ElevatedButton.styleFrom(
+                               backgroundColor: Colors.amber.withOpacity(0.8),
+                             ),
+                             onPressed: () {
+                               Navigator.pop(context);
+                               cubit.clearController();
+                             },
+                             icon: const Icon(Icons.cancel),
+                             label: const Text('Cancle')),
+                         const SizedBox(
+                           height: 20,
+                         ),
+                         Spacer(),
+                         ElevatedButton.icon(
+                             style: ElevatedButton.styleFrom(
+                               backgroundColor: Colors.amber.withOpacity(0.8),
+                             ),
+                             onPressed: () {
+                               if (formKey.currentState!.validate()) {
+                                 cubit.addTodo(TodoModel(
+                                   title: cubit.titleController.text,
+                                   description: cubit.descriptionController.text,
+                                   date: cubit.initalDate,
+                                   isDone: false,
+                                   isArchived: false,
+                                 ));
+                                 ScaffoldMessenger.of(context)
+                                     .showSnackBar(SnackBar(
+                                   content:
+                                   Text('${cubit.titleController.text} added'),
+                                   backgroundColor: Colors.green,
+                                 ));
+                                 Navigator.pop(context);
 
-                              cubit.clearController();
-                            }
-                          },
-                          icon: const Icon(Icons.add),
-                          label: const Text('Add')),
+                                 cubit.clearController();
+                               }
+                             },
+                             icon: const Icon(Icons.add),
+                             label: const Text('Add')),
+                       ],
+                     )
                     ],
                   ),
                 );

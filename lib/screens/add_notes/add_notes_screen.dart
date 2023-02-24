@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:new_task/model/todo_model.dart';
-import 'package:new_task/widgets/button.dart';
+import 'package:new_task/screens/home/all_tasks_screen.dart';
+import 'package:new_task/shard/widgets/button.dart';
+import 'package:new_task/shard/widgets/navigators.dart';
 
-import '../../cubit/cubit.dart';
-import '../../cubit/states.dart';
-import '../../widgets/custom_form_faild.dart';
-import '../../widgets/validation.dart';
+import '../../layout/home_screen.dart';
+import '../../shard/cubit/cubit.dart';
+import '../../shard/cubit/states.dart';
+import '../../shard/widgets/custom_form_faild.dart';
+import '../../shard/widgets/validation.dart';
 
 class AddNotesScreen extends StatefulWidget {
   const AddNotesScreen({Key? key}) : super(key: key);
@@ -94,6 +97,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: CustomFormField(
+                  controller: cubit.titleController,
                   hint: 'Note Title',
                   onSaved: (value) {
                     title = value;
@@ -106,6 +110,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: CustomFormField(
+                  controller: cubit.descriptionController,
                   hint: 'Title Description',
                   maxLines: 15,
                   onSaved: (value) {
@@ -140,21 +145,18 @@ class _AddNotesFormState extends State<AddNotesForm> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       cubit.addTodo(TodoModel(
-                        title: cubit.titleController.text,
-                        description: cubit.descriptionController.text,
+                        title: cubit.titleController.text.toString(),
+                        description:
+                            cubit.descriptionController.text.toString(),
                         date: cubit.initalDate,
                         isDone: false,
                         isArchived: false,
                       ));
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(
-                        content:
-                        Text('${cubit.titleController.text} added'),
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text('${cubit.titleController.text} added'),
                         backgroundColor: Colors.green,
                       ));
-                      // Navigator.pop(context);
-
-                      // cubit.clearController();
+                      cubit.clearController();
                     }
                   },
                 ),

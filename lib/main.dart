@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:new_task/screens/home_screen.dart';
+import 'package:new_task/layout/home_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'cubit/cubit.dart';
+import 'shard/cubit/cubit.dart';
 import 'model/todo_model.dart';
 
 const String todoBoxName = "todos";

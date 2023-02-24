@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
-import 'package:new_task/cubit/cubit.dart';
-import 'package:new_task/cubit/states.dart';
+import 'package:new_task/shard/cubit/cubit.dart';
+import 'package:new_task/shard/cubit/states.dart';
 
-import '../../widgets/my_divider.dart';
+import '../../shard/widgets/my_divider.dart';
 
 
 class SettingsScreen extends StatefulWidget {

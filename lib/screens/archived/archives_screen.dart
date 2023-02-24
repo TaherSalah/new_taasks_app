@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../cubit/cubit.dart';
-import '../cubit/states.dart';
-import '../model/todo_model.dart';
-import '../widgets/todo_tile.dart';
+import '../../shard/cubit/cubit.dart';
+import '../../shard/cubit/states.dart';
+import '../../model/todo_model.dart';
+import '../../shard/widgets/todo_tile.dart';
 
 
 class ArchivesScreen extends StatelessWidget {
