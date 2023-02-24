@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:new_task/screens/add_notes/add_notes_screen.dart';
+import 'package:new_task/shard/widgets/navigators.dart';
 import '../shard/cubit/cubit.dart';
 import '../shard/cubit/states.dart';
 import '../model/todo_model.dart';
@@ -20,6 +22,13 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               title: Text(cubit.screenTitles[cubit.currentIndex]),
+              actions: [
+                IconButton(onPressed: () {
+                  navigate(context, AddNotesScreen());
+                },
+                icon: Icon(Icons.add),
+                )
+              ],
             ),
             body: cubit.screens[cubit.currentIndex],
             bottomNavigationBar: defualtBottomNavigationBar(
@@ -51,6 +60,8 @@ class HomeScreen extends StatelessWidget {
                 currentIndex: cubit.currentIndex,
                 context: context),
             floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.amberAccent,
+
               onPressed: () {
                 showDialog(
                   context: context,
@@ -174,7 +185,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.add,color: Colors.white,size: 35,),
             ),
           );
         });

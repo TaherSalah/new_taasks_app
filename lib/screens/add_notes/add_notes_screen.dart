@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:new_task/layout/home_screen.dart';
 import 'package:new_task/model/todo_model.dart';
 import 'package:new_task/screens/home/all_tasks_screen.dart';
 import 'package:new_task/shard/widgets/button.dart';
 import 'package:new_task/shard/widgets/navigators.dart';
 
-import '../../layout/home_screen.dart';
 import '../../shard/cubit/cubit.dart';
 import '../../shard/cubit/states.dart';
 import '../../shard/widgets/custom_form_faild.dart';
@@ -112,7 +112,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                 child: CustomFormField(
                   controller: cubit.descriptionController,
                   hint: 'Title Description',
-                  maxLines: 15,
+                  maxLines: 10,
                   onSaved: (value) {
                     subTitle = value;
                     setState(() {});
@@ -122,10 +122,13 @@ class _AddNotesFormState extends State<AddNotesForm> {
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: 30,
               ),
               ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(maximumSize: Size.infinite),
+                  style: ElevatedButton.styleFrom(
+                      maximumSize: Size.infinite,
+                      backgroundColor: Colors.amber,
+                      padding: EdgeInsets.all(15)),
                   onPressed: () {
                     cubit.setDate(context);
                   },
@@ -137,6 +140,9 @@ class _AddNotesFormState extends State<AddNotesForm> {
                         // displaying formatted date
                         .format(cubit.initalDate),
                   )),
+              const SizedBox(
+                height: 30,
+              ),
               Padding(
                 padding: EdgeInsets.all(15.0),
                 child: defaultButton(
@@ -153,10 +159,17 @@ class _AddNotesFormState extends State<AddNotesForm> {
                         isArchived: false,
                       ));
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text('${cubit.titleController.text} added'),
+
+                        content: Row(
+                          children: [
+                            Icon(Icons.done),
+                            Text('${cubit.titleController.text} Has been added To All Tasks',textAlign: TextAlign.center,)
+                          ],
+                        ),
                         backgroundColor: Colors.green,
                       ));
                       cubit.clearController();
+                      navigate(context, HomeScreen());
                     }
                   },
                 ),

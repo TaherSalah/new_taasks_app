@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: [
                 Image.asset(
                   'assets/images/logo.png',
-                  height: 300.0,
+                  height: 400.0,
                   width: 300.0,
                 ),
               ],
@@ -46,9 +46,10 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20),
+                  fontFamily: 'cairo',
+                  fontSize: 30),
             ),
-            const CircularProgressIndicator(),
+            Container(height:50,width:50,child: const CircularProgressIndicator(color: Colors.amber,strokeWidth: 10,)),
           ],
         ),
       ),

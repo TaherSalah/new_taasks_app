@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:new_task/shard/cubit/cubit.dart';
 import 'package:new_task/shard/cubit/states.dart';
+import 'package:new_task/shard/widgets/navigators.dart';
 
 import '../../shard/widgets/my_divider.dart';
-
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -30,77 +30,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: ListView(
               children: [
                 // User card
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: ClipOval(
-                        child: Image.asset(
-                          'assets/images/user.jpg',
-                          fit: BoxFit.cover,
-                          width: 100,
-                          height: 100,
-                        ),
-                      ),
-                    ),
-                    const Text(
-                      'طاهر صلاح',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'tahersalah@gmail.com',
-                      style: Theme.of(context).textTheme.caption,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        // navigate(context, EditScreen());
-                        print('ontap');
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 4),
-                        width: 210,
-                        decoration: BoxDecoration(
-                            color: Colors.lime,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.4),
-                                  offset: const Offset(0, 5.0),
-                                  blurRadius: 5)
-                            ]),
-                        child: Row(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.all(4.0),
-                              child: Text(
-                                'تعديل الملف الشخصي',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 5),
-                              child: Icon(Icons.arrow_back_ios_new_outlined,
-                                  color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+
                 const SizedBox(
                   height: 25,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Container(
                     child: const Text(
                       'إعدادت عامة',
@@ -111,18 +46,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
 
                 myDivider(),
-                SizedBox(height: 8,),
-
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.pencil_outline,
-                  iconStyle: IconStyle(),
-                  title: 'المظهر',
-                  subtitle: "تغيير المظهر الخاص بالبرنامج",
+                SizedBox(
+                  height: 8,
                 ),
+
+                // SettingsItem(
+                //   onTap: () {},
+                //   icons: CupertinoIcons.pencil_outline,
+                //   iconStyle: IconStyle(),
+                //   title: 'المظهر',
+                //   subtitle: "تغيير المظهر الخاص بالبرنامج",
+                // ),
                 SettingsItem(
                   onTap: () {},
                   icons: Icons.dark_mode_rounded,
@@ -154,6 +93,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: "تعرف عنا اكتر",
                 ),
 
+                // SettingsItem(
+                //   onTap: () {},
+                //   icons: CupertinoIcons.question_circle,
+                //   iconStyle: IconStyle(),
+                //   title: 'مساعدة',
+                //   subtitle: "لتقديم مساعدة اكثر حول البرنامج",
+                // ),
                 SettingsItem(
                   onTap: () {},
                   icons: CupertinoIcons.question_circle,
@@ -161,14 +107,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: 'مساعدة',
                   subtitle: "لتقديم مساعدة اكثر حول البرنامج",
                 ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.question_circle,
-                  iconStyle: IconStyle(),
-                  title: 'مساعدة',
-                  subtitle: "لتقديم مساعدة اكثر حول البرنامج",
+                SizedBox(
+                  height: 15,
                 ),
-                SizedBox(height: 15,),
                 myDivider(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -182,7 +123,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
                 // You can add a settings title
                 SettingsItem(
                   onTap: () {},
