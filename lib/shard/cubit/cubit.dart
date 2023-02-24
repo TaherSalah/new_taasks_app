@@ -3,13 +3,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:new_task/cubit/states.dart';
-import 'package:new_task/screens/home_screen.dart';
+import 'package:new_task/layout/home_screen.dart';
 
 import '../model/todo_model.dart';
 import '../screens/add_notes/add_notes_screen.dart';
-import '../screens/all_todos_screen.dart';
-import '../screens/archives_screen.dart';
-import '../screens/done_screen.dart';
+import '../screens/home/all_tasks_screen.dart';
+import '../screens/archived/archives_screen.dart';
+import '../screens/done/done_screen.dart';
 import '../screens/settings/settings_screen.dart';
 
 class TodoCubit extends Cubit<TodoStates> {
