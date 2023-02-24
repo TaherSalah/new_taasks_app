@@ -21,9 +21,16 @@ class ArchivesScreen extends StatelessWidget {
         }
       }
       return todosList.isEmpty
-          ? const Center(
-              child: Text('Archives is empty'),
-            )
+          ?  Center(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/arch.png',fit: BoxFit.cover),
+            ],
+          ),
+        ),            )
           : ListView.separated(
         separatorBuilder: (context, index) => SizedBox(height: 20,),
               itemBuilder: (context, index) {

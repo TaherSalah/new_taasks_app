@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Center(child: Text('Add Short Task !')),
-                    icon: Icon(Icons.add),
+                    icon: Image.asset('assets/images/addNewNotes.png',color: Colors.white,width: 50,height: 50,),
                     // To display the title it is optional
                     content: BlocBuilder<TodoCubit, TodoStates>(
                         builder: (context, state) {
@@ -84,10 +84,12 @@ class HomeScreen extends StatelessWidget {
                               height: 14,
                             ),
                             TextFormField(
+
                               controller: cubit.descriptionController,
                               // minLines: 10,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
+
                                 labelText: 'Description',
                                 hintText: 'Enter your Description',
                               ),
@@ -100,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                               },
                             ),
                             const SizedBox(
-                              height: 14,
+                              height: 25,
                             ),
                             ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
@@ -132,6 +134,7 @@ class HomeScreen extends StatelessWidget {
                              onPressed: () {
                                Navigator.pop(context);
                                cubit.clearController();
+
                              },
                              icon: const Icon(Icons.cancel),
                              label: const Text('Cancle')),

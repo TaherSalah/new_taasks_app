@@ -21,8 +21,16 @@ class AllTodosScreen extends StatelessWidget {
         }
       }
       return todosList.isEmpty
-          ? const Center(
-              child: Text('All Notes  is empty'),
+          ?  Center(
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset('assets/images/home.png',fit: BoxFit.cover),
+                  ],
+                ),
+              ),
             )
           : ListView.builder(
               itemBuilder: (context, index) {

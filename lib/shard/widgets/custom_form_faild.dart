@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
-  const CustomFormField({Key? key, required this.hint, this.maxLines = 1, this.onSaved, this.onChanged, this.validator,this.maxLength, required this.controller})
+   CustomFormField({Key? key, required this.hint, this.maxLines = 1, this.onSaved, this.onChanged, this.validator,this.maxLength, required this.controller,this.obscureText=false})
       : super(key: key);
 
   final String hint;
@@ -11,6 +11,7 @@ class CustomFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final TextEditingController controller;
+  bool obscureText;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +20,7 @@ class CustomFormField extends StatelessWidget {
           height: 20,
         ),
         TextFormField(
-
+obscureText: obscureText,
           controller: controller,
           enabled:true,
           keyboardType: TextInputType.text,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:new_task/layout/home_screen.dart';
+import 'package:new_task/screens/splash/splash_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'shard/cubit/cubit.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           backgroundColor: Colors.black12
         ),
-        home: HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

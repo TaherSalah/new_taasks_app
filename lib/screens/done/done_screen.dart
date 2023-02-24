@@ -21,9 +21,16 @@ class DoneScreen extends StatelessWidget {
         }
       }
       return todosList.isEmpty
-          ? const Center(
-              child: Text('Done is empty'),
-            )
+          ?  Center(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/done.png',fit: BoxFit.cover),
+            ],
+          ),
+        ),            )
           : ListView.builder(
               itemBuilder: (context, index) {
                 return CardBuilder(todoModel: todosList[index]);
