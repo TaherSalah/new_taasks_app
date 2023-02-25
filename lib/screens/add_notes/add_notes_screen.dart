@@ -60,7 +60,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
               Padding(
                   padding: const EdgeInsets.only(top: 15.0),
                   child: Text('Add New Notes',
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           fontSize: 25, fontWeight: FontWeight.bold))),
               Column(
                 children: [
@@ -68,7 +68,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                     height: 10,
                   ),
                   Container(
-                    height: 2,
+                    height: 3,
                     width: 30,
                     color: Colors.red,
                   ),
@@ -76,7 +76,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                     height: 3,
                   ),
                   Container(
-                    height: 2,
+                    height: 3,
                     width: 50,
                     color: Colors.amber,
                   ),
@@ -84,7 +84,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                     height: 3,
                   ),
                   Container(
-                    height: 2,
+                    height: 3,
                     width: 30,
                     color: Colors.red,
                   ),
@@ -98,6 +98,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: CustomFormField(
                   controller: cubit.titleController,
+
                   hint: 'Note Title',
                   onSaved: (value) {
                     title = value;
@@ -133,12 +134,15 @@ class _AddNotesFormState extends State<AddNotesForm> {
                     cubit.setDate(context);
                   },
                   icon: const Icon(Icons.date_range),
+
                   label: Text(
+
                     // Formatted Date
                     DateFormat.yMMMEd()
 
                         // displaying formatted date
                         .format(cubit.initalDate),
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
                   )),
               const SizedBox(
                 height: 30,
@@ -169,7 +173,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
                         backgroundColor: Colors.green,
                       ));
                       cubit.clearController();
-                      navigate(context, HomeScreen());
+                      navigateAndFinish(context, HomeScreen());
                     }
                   },
                 ),

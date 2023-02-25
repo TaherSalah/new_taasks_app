@@ -97,11 +97,13 @@ class _CardBuilderState extends State<CardBuilder> {
   @override
   Widget build(BuildContext context) {
     var cubit = TodoCubit.get(context);
-
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8, bottom: 4),
       child: Column(
         children: [
+          const SizedBox(
+            height: 15,
+          ),
           Card(
             elevation: 1.8,
             color: const Color(0xfffaee9e),
@@ -201,8 +203,7 @@ class _CardBuilderState extends State<CardBuilder> {
                         padding: EdgeInsets.only(bottom: 8.0),
                         child: Text(
                           textAlign: TextAlign.justify,
-                          maxLines:
-                              widget.todoModel.description.hashCode,
+                          maxLines: widget.todoModel.description.hashCode,
                           widget.todoModel.description,
                           style: const TextStyle(
                               overflow: TextOverflow.ellipsis,

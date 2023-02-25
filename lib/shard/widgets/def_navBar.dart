@@ -16,7 +16,7 @@ Widget defualtBottomNavigationBar({
       tabShadow: [
         BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8)
       ],
-      duration:const Duration(milliseconds:500),
+      duration: const Duration(milliseconds: 500),
       gap: 16,
       onTabChange: onTabChange,
       selectedIndex: 0,
@@ -26,6 +26,6 @@ Widget defualtBottomNavigationBar({
       color: Colors.white,
       textStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
           fontSize: 16.0, color: Colors.amber, fontWeight: FontWeight.bold),
-      padding: const EdgeInsets.symmetric(horizontal:15, vertical: 18.5),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 18.5),
       tabs: tabs,
     ));

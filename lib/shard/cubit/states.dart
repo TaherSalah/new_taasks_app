@@ -9,3 +9,11 @@ class SetDateState extends TodoStates {}
 class GetBobState extends TodoStates {}
 
 class AddTotodosListState extends TodoStates {}
+
+
+abstract class ThemeStates{}
+
+class InitialThemeState extends ThemeStates{}
+
+class ChangeModeState extends ThemeStates{}
+

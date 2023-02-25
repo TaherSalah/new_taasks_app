@@ -4,19 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:new_task/shard/cubit/cubit.dart';
 import 'package:new_task/shard/cubit/states.dart';
-import 'package:new_task/shard/widgets/navigators.dart';
-
 import '../../shard/widgets/my_divider.dart';
+
+
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
-
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
-
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isDark = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         return Padding(
           padding: const EdgeInsets.all(10),
           child: Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: ListView(
               children: [
                 // User card
@@ -34,34 +33,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Container(
-                    child: const Text(
-                      'إعدادت عامة',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'cairo',
-                          fontWeight: FontWeight.bold),
-                    ),
+                 Padding(
+                  padding:const EdgeInsets.symmetric(vertical: 8.0),
+                  child:Text(
+                    'General Settings',
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
 
                 myDivider(),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-
-                // SettingsItem(
-                //   onTap: () {},
-                //   icons: CupertinoIcons.pencil_outline,
-                //   iconStyle: IconStyle(),
-                //   title: 'المظهر',
-                //   subtitle: "تغيير المظهر الخاص بالبرنامج",
-                // ),
                 SettingsItem(
                   onTap: () {},
                   icons: Icons.dark_mode_rounded,
@@ -70,13 +56,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.red,
                   ),
-                  title: 'الوضع الليلي',
-                  subtitle: "الافتراضي",
+                  title: 'Theme Mode',
+                  subtitle:isDark ? "Dark Mode":'Night Mode',
+                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  titleStyle: Theme.of(context).textTheme.bodyLarge,
                   trailing: Switch.adaptive(
                     value: isDark,
                     onChanged: (value) {
                       setState(() {
                         isDark = value;
+                        ThemeCubit.get(context).changeMode();
                         // ignore: avoid_print
                         print(value);
                       });
@@ -89,58 +78,56 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconStyle: IconStyle(
                     backgroundColor: Colors.purple,
                   ),
-                  title: 'من نحن ؟  ',
-                  subtitle: "تعرف عنا اكتر",
+                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  titleStyle: Theme.of(context).textTheme.bodyLarge,
+                  title: 'About Us  ',
+                  subtitle: "Know more about us",
                 ),
-
-                // SettingsItem(
-                //   onTap: () {},
-                //   icons: CupertinoIcons.question_circle,
-                //   iconStyle: IconStyle(),
-                //   title: 'مساعدة',
-                //   subtitle: "لتقديم مساعدة اكثر حول البرنامج",
-                // ),
                 SettingsItem(
                   onTap: () {},
                   icons: CupertinoIcons.question_circle,
                   iconStyle: IconStyle(),
-                  title: 'مساعدة',
-                  subtitle: "لتقديم مساعدة اكثر حول البرنامج",
+                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  titleStyle: Theme.of(context).textTheme.bodyLarge,
+                  title: 'Help',
+                  subtitle: "Provide more assistance for using the program",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 myDivider(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Container(
-                    child: const Text(
-                      'إعدادت الحساب',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'cairo',
-                          fontWeight: FontWeight.bold),
+                    child:
+                    Text(
+                      'Account Setting',
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 // You can add a settings title
                 SettingsItem(
                   onTap: () {},
                   icons: Icons.exit_to_app_rounded,
-                  title: "تسجيل الخروج",
+                  iconStyle: IconStyle(
+                      iconsColor: Colors.white, backgroundColor: Colors.greenAccent),
+                  title: "Sign out",
+                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  titleStyle: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SettingsItem(
                   onTap: () {},
                   icons: CupertinoIcons.delete_solid,
                   iconStyle: IconStyle(
-                      iconsColor: Colors.red, backgroundColor: Colors.white),
-                  title: "حذف الحساب",
-                  titleStyle: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                      iconsColor: Colors.white, backgroundColor: Colors.red),
+                  title: "Delete Account",
+                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  titleStyle: Theme.of(context).textTheme.bodyLarge,
+
                 ),
               ],
             ),

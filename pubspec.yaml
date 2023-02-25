@@ -21,11 +21,13 @@ dependencies:
   flutter_settings_screens:
   babstrap_settings_screen:
   fluttertoast:
+  shared_preferences:
   simple_animations:
   google_nav_bar:
   flutter_screenutil:
   flutter_feather_icons:
   google_fonts:
+  hexcolor: ^3.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

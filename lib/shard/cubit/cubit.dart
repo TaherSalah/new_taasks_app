@@ -11,6 +11,7 @@ import '../../screens/home/all_tasks_screen.dart';
 import '../../screens/archived/archives_screen.dart';
 import '../../screens/done/done_screen.dart';
 import '../../screens/settings/settings_screen.dart';
+import '../network/cachHelper.dart';
 
 class TodoCubit extends Cubit<TodoStates> {
   TodoCubit() : super(InitialAppState());
@@ -120,4 +121,27 @@ class TodoCubit extends Cubit<TodoStates> {
     emit(SetCurrentIndexAppState());
   }
 
+
+   ///// Theme cubit ////
+
+
 }
+class ThemeCubit extends Cubit<ThemeStates> {
+  ThemeCubit() : super(InitialThemeState());
+
+  static ThemeCubit get(context) => BlocProvider.of(context);
+
+  bool isDark = false;
+
+  ThemeMode darkTheme = ThemeMode.dark;
+  void changeMode({bool? fromShard}) {
+    if (fromShard != null) {
+      isDark = fromShard;
+      emit(ChangeModeState());
+    } else {
+      isDark = !isDark;
+      CacheHelper.putBoolean(key: 'isDark', value: isDark).then((value) {
+        emit(ChangeModeState());
+      });
+    }
+  }}

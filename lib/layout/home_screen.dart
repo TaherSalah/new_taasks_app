@@ -3,14 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:new_task/screens/add_notes/add_notes_screen.dart';
+import 'package:new_task/shard/components/constance.dart';
 import 'package:new_task/shard/widgets/navigators.dart';
 import '../shard/cubit/cubit.dart';
 import '../shard/cubit/states.dart';
 import '../model/todo_model.dart';
 import '../shard/widgets/def_navBar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -19,15 +26,29 @@ class HomeScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = TodoCubit.get(context);
+          bool isDark=false;
           return Scaffold(
             appBar: AppBar(
-              title: Text(cubit.screenTitles[cubit.currentIndex]),
+              backgroundColor: Colors.black,
+              title: Text(cubit.screenTitles[cubit.currentIndex],style: Theme.of(context).textTheme.labelLarge!.copyWith(color: Colors.amber,fontFamily: 'cairo',fontWeight: FontWeight.bold,fontSize: 20,letterSpacing: 2),),
               actions: [
-                IconButton(onPressed: () {
-                  navigate(context, AddNotesScreen());
-                },
-                icon: Icon(Icons.add),
-                )
+                IconButton(
+                  onPressed: () {
+                    navigate(context, const AddNotesScreen()
+                    );
+                  },
+                  icon:const Icon(Icons.add,color: Colors.grey,size: 30,),
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      ThemeCubit.get(context).changeMode();
+                      isDark= !isDark;
+                    });
+                  },
+                  icon: const Icon(Icons.brightness_4_outlined,color: Colors.white,size: 30,),
+                ),
+
               ],
             ),
             body: cubit.screens[cubit.currentIndex],
@@ -61,13 +82,18 @@ class HomeScreen extends StatelessWidget {
                 context: context),
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.amberAccent,
-
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: const Center(child: Text('Add Short Task !')),
-                    icon: Image.asset('assets/images/addNewNotes.png',color: Colors.white,width: 50,height: 50,),
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    title:  Center(child: Text('Add Short Task !',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.amber,fontFamily: 'cairo'),)),
+                    icon: Image.asset(
+                      'assets/images/addNewNotes.png',
+                      color: Theme.of(context).primaryColor,
+                      width: 50,
+                      height: 50,
+                    ),
                     // To display the title it is optional
                     content: BlocBuilder<TodoCubit, TodoStates>(
                         builder: (context, state) {
@@ -78,14 +104,22 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             TextFormField(
                               controller: cubit.titleController,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 border: OutlineInputBorder(),
-                                labelText: 'Title',
-                                hintText: 'Enter Title',
+                                labelStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(fontFamily: 'cairo',fontSize: 16),
+                                hintStyle:  Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(fontFamily: 'cairo',fontSize: 16),
+                                labelText: 'Task Title',
+                                hintText: 'Enter your Task Title',
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'hey bro dont leave it empty';
+                                  return 'hey Pro don\'\t leave it empty';
                                 } else {
                                   return null;
                                 }
@@ -95,25 +129,31 @@ class HomeScreen extends StatelessWidget {
                               height: 14,
                             ),
                             TextFormField(
-
                               controller: cubit.descriptionController,
                               // minLines: 10,
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-
-                                labelText: 'Description',
-                                hintText: 'Enter your Description',
+                              decoration:  InputDecoration(
+                                border: const OutlineInputBorder(),
+                                labelStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(fontFamily: 'cairo',fontSize: 16),
+                                hintStyle:  Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(fontFamily: 'cairo',fontSize: 16),
+                                labelText: 'Task Description',
+                                hintText: 'Enter your Task Description',
                               ),
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return 'hey bro';
+                                  return 'hey Pro don\'\t leave it empty';
                                 } else {
                                   return null;
                                 }
                               },
                             ),
                             const SizedBox(
-                              height: 25,
+                              height: 10,
                             ),
                             ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
@@ -136,56 +176,60 @@ class HomeScreen extends StatelessWidget {
                       );
                     }),
                     actions: [
-                     Row(
-                       children: [
-                         ElevatedButton.icon(
-                             style: ElevatedButton.styleFrom(
-                               backgroundColor: Colors.amber.withOpacity(0.8),
-                             ),
-                             onPressed: () {
-                               Navigator.pop(context);
-                               cubit.clearController();
+                      Row(
+                        children: [
+                          ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber.withOpacity(0.8),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                cubit.clearController();
+                              },
+                              icon: const Icon(Icons.cancel),
+                              label: const Text('Cancle')),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Spacer(),
+                          ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber.withOpacity(0.8),
+                              ),
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  cubit.addTodo(TodoModel(
+                                    title: cubit.titleController.text,
+                                    description:
+                                        cubit.descriptionController.text,
+                                    date: cubit.initalDate,
+                                    isDone: false,
+                                    isArchived: false,
+                                  ));
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text(
+                                        '${cubit.titleController.text} added'),
+                                    backgroundColor: Colors.green,
+                                  ));
+                                  Navigator.pop(context);
 
-                             },
-                             icon: const Icon(Icons.cancel),
-                             label: const Text('Cancle')),
-                         const SizedBox(
-                           height: 20,
-                         ),
-                         Spacer(),
-                         ElevatedButton.icon(
-                             style: ElevatedButton.styleFrom(
-                               backgroundColor: Colors.amber.withOpacity(0.8),
-                             ),
-                             onPressed: () {
-                               if (formKey.currentState!.validate()) {
-                                 cubit.addTodo(TodoModel(
-                                   title: cubit.titleController.text,
-                                   description: cubit.descriptionController.text,
-                                   date: cubit.initalDate,
-                                   isDone: false,
-                                   isArchived: false,
-                                 ));
-                                 ScaffoldMessenger.of(context)
-                                     .showSnackBar(SnackBar(
-                                   content:
-                                   Text('${cubit.titleController.text} added'),
-                                   backgroundColor: Colors.green,
-                                 ));
-                                 Navigator.pop(context);
-
-                                 cubit.clearController();
-                               }
-                             },
-                             icon: const Icon(Icons.add),
-                             label: const Text('Add')),
-                       ],
-                     )
+                                  cubit.clearController();
+                                }
+                              },
+                              icon: const Icon(Icons.add),
+                              label: const Text('Add')),
+                        ],
+                      )
                     ],
                   ),
                 );
               },
-              child: const Icon(Icons.add,color: Colors.white,size: 35,),
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 35,
+              ),
             ),
           );
         });
