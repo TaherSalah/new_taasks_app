@@ -11,27 +11,33 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About Us'),
+        elevation: 2,
+        title:  Text('About Us',style: Theme.of(context).textTheme.labelLarge!.copyWith(color: Colors.amber,fontFamily: 'cairo',fontWeight: FontWeight.bold,fontSize: 20,letterSpacing: 2),),
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Center(
               child: Container(
-
-                height: 150,
+                height: 130,
                 width: 150,
-                child: Image.asset('assets/images/logo.png'),
+                child: Image.asset('assets/images/logo_about.png'),
               ),
             ),
+            Text(
+              'Note Tasks',
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 25,letterSpacing: 2),
+            ),
+
             Text('version : 1.0.0',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
-                    .copyWith(fontSize: 13, color: Colors.grey)),
+                    .copyWith(fontSize: 16.5,fontWeight: FontWeight.normal, color: Colors.grey)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -41,13 +47,9 @@ class AboutScreen extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
-                      .copyWith(fontSize: 14),
+                      .copyWith(fontSize: 15),
                 ),
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 23.0, vertical: 12),
-              child: myDivider(),
             ),
             Directionality(
               textDirection: TextDirection.rtl,
@@ -60,20 +62,23 @@ class AboutScreen extends StatelessWidget {
                         Expanded(child: myDivider()),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('عن البرنامج',style: Theme.of(context).textTheme.bodyLarge,),
+                          child: Text(
+                            'عن البرنامج',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                         ),
                         Expanded(child: myDivider()),
                       ],
                     ),
-
                     SizedBox(
                       height: 10,
                     ),
-                     Text(
-                        textAlign: TextAlign.justify,
-                        selectionColor: Colors.amber,
-                        'برنامج Note Tasks هو رفيقك الاول في تسجيل مهامك اليومية ومتابعتها بشكل مستمر فمن خلاله تستطيع تسجيل كل ماتريد من ملاحظات يومية بكل سهولة ويسر دون خوف من ضياع هذة الملاحظات في اي وقت بشكل او باخر اترك لك تجربة ممتعه لهذا البرنامج واذا كان لديك اي اقتراحات لتطوير هذا البرنامج قم بمراسلتي من خلال روابط السوشيال ميديا الموجودة اسفل هذة الصفحة.',
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 16.5,fontWeight: FontWeight.normal),
+                    Text(
+                      textAlign: TextAlign.justify,
+                      selectionColor: Colors.amber,
+                      'برنامج Note Tasks هو رفيقك الاول في تسجيل مهامك اليومية ومتابعتها بشكل مستمر فمن خلاله تستطيع تسجيل كل ماتريد من ملاحظات يومية بكل سهولة ويسر دون خوف من ضياع هذة الملاحظات في اي وقت بشكل او باخر اترك لك تجربة ممتعه لهذا البرنامج واذا كان لديك اي اقتراحات لتطوير هذا البرنامج قم بمراسلتي من خلال روابط السوشيال ميديا الموجودة اسفل هذة الصفحة.',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontSize: 16.5, fontWeight: FontWeight.normal),
                     ),
                     SizedBox(
                       height: 10,
@@ -83,21 +88,24 @@ class AboutScreen extends StatelessWidget {
                         Expanded(child: myDivider()),
                         Padding(
                           padding: const EdgeInsets.all(7.0),
-                          child: Text('تواصل معنا',style: Theme.of(context).textTheme.bodyLarge,),
+                          child: Text(
+                            'تواصل معنا',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                         ),
                         Expanded(child: myDivider()),
                       ],
                     ),
                     Container(
-                        decoration:  BoxDecoration(
+                        decoration: BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
                                   color: Colors.grey.withOpacity(0.7),
                                 ),
-                                left:BorderSide (
+                                left: BorderSide(
                                   color: Colors.grey.withOpacity(0.7),
-                                ) ,
-                                right:BorderSide (
+                                ),
+                                right: BorderSide(
                                   color: Colors.grey.withOpacity(0.7),
                                 ))),
                         child: Padding(
@@ -109,10 +117,12 @@ class AboutScreen extends StatelessWidget {
                         Expanded(child: myDivider()),
                         Padding(
                           padding: const EdgeInsets.all(7.0),
-                          child: Text('تقييم التطبيق',style: Theme.of(context).textTheme.bodyLarge,),
+                          child: Text(
+                            'تقييم التطبيق',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                         ),
                         Expanded(child: myDivider()),
-
                       ],
                     ),
                     RetBar()
@@ -222,12 +232,11 @@ class SocialIcons extends StatelessWidget {
             ),
           ),
         ),
-
-
       ],
     );
   }
 }
+
 class RetBar extends StatelessWidget {
   const RetBar({Key? key}) : super(key: key);
 
