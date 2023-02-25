@@ -28,6 +28,7 @@ dependencies:
   flutter_feather_icons:
   google_fonts:
   hexcolor: ^3.0.1
+  about: ^2.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:new_task/shard/cubit/cubit.dart';
 import 'package:new_task/shard/cubit/states.dart';
+import 'package:new_task/shard/widgets/navigators.dart';
 import '../../shard/widgets/my_divider.dart';
+import '../about/about_us.dart';
 
 
 
@@ -73,7 +75,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 SettingsItem(
-                  onTap: () {},
+                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
+
+                  onTap: () {
+                    navigate(context, AboutScreen());
+                  },
                   icons: Icons.info_rounded,
                   iconStyle: IconStyle(
                     backgroundColor: Colors.purple,
@@ -84,6 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: "Know more about us",
                 ),
                 SettingsItem(
+                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
                   onTap: () {},
                   icons: CupertinoIcons.question_circle,
                   iconStyle: IconStyle(),
@@ -111,6 +118,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 // You can add a settings title
                 SettingsItem(
+                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
+
                   onTap: () {},
                   icons: Icons.exit_to_app_rounded,
                   iconStyle: IconStyle(
@@ -120,6 +129,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SettingsItem(
+                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
+
                   onTap: () {},
                   icons: CupertinoIcons.delete_solid,
                   iconStyle: IconStyle(
