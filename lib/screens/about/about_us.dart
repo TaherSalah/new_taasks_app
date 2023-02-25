@@ -12,10 +12,18 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 2,
-        title:  Text('About Us',style: Theme.of(context).textTheme.labelLarge!.copyWith(color: Colors.amber,fontFamily: 'cairo',fontWeight: FontWeight.bold,fontSize: 20,letterSpacing: 2),),
+        title: Text('About Us', style: Theme
+            .of(context)
+            .textTheme
+            .labelLarge!
+            .copyWith(color: Colors.amber,
+            fontFamily: 'cairo',
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            letterSpacing: 2),),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             const SizedBox(
@@ -30,21 +38,29 @@ class AboutScreen extends StatelessWidget {
             ),
             Text(
               'Note Tasks',
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 25,letterSpacing: 2),
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontSize: 25, letterSpacing: 2),
             ),
 
             Text('version : 1.0.0',
-                style: Theme.of(context)
+                style: Theme
+                    .of(context)
                     .textTheme
                     .bodyLarge!
-                    .copyWith(fontSize: 16.5,fontWeight: FontWeight.normal, color: Colors.grey)),
+                    .copyWith(fontSize: 16.5,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.copyright_sharp, size: 20),
                 Text(
                   'All Rights Reseved by Dev Taher Salah \u{1f60e}',
-                  style: Theme.of(context)
+                  style: Theme
+                      .of(context)
                       .textTheme
                       .bodyLarge!
                       .copyWith(fontSize: 15),
@@ -64,7 +80,10 @@ class AboutScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             'عن البرنامج',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyLarge,
                           ),
                         ),
                         Expanded(child: myDivider()),
@@ -77,7 +96,11 @@ class AboutScreen extends StatelessWidget {
                       textAlign: TextAlign.justify,
                       selectionColor: Colors.amber,
                       'برنامج Note Tasks هو رفيقك الاول في تسجيل مهامك اليومية ومتابعتها بشكل مستمر فمن خلاله تستطيع تسجيل كل ماتريد من ملاحظات يومية بكل سهولة ويسر دون خوف من ضياع هذة الملاحظات في اي وقت بشكل او باخر اترك لك تجربة ممتعه لهذا البرنامج واذا كان لديك اي اقتراحات لتطوير هذا البرنامج قم بمراسلتي من خلال روابط السوشيال ميديا الموجودة اسفل هذة الصفحة.',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(
                           fontSize: 16.5, fontWeight: FontWeight.normal),
                     ),
                     SizedBox(
@@ -90,7 +113,10 @@ class AboutScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(7.0),
                           child: Text(
                             'تواصل معنا',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyLarge,
                           ),
                         ),
                         Expanded(child: myDivider()),
@@ -119,7 +145,10 @@ class AboutScreen extends StatelessWidget {
                           padding: const EdgeInsets.all(7.0),
                           child: Text(
                             'تقييم التطبيق',
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyLarge,
                           ),
                         ),
                         Expanded(child: myDivider()),
@@ -249,10 +278,11 @@ class RetBar extends StatelessWidget {
       allowHalfRating: true,
       itemCount: 5,
       itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-      itemBuilder: (context, _) => Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
+      itemBuilder: (context, _) =>
+          Icon(
+            Icons.star,
+            color: Colors.amber,
+          ),
       onRatingUpdate: (rating) {
         print(rating);
       },

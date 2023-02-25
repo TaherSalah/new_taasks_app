@@ -7,6 +7,7 @@ import 'package:new_task/shard/cubit/states.dart';
 import 'package:new_task/shard/widgets/navigators.dart';
 import '../../shard/widgets/my_divider.dart';
 import '../about/about_us.dart';
+import '../help/help_screen.dart';
 
 
 
@@ -91,7 +92,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 SettingsItem(
                   trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
-                  onTap: () {},
+                  onTap: () {
+                    navigate(context, const HelpScreen());
+                  },
                   icons: CupertinoIcons.question_circle,
                   iconStyle: IconStyle(),
                   subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
