@@ -9,16 +9,15 @@ import '../../shard/widgets/my_divider.dart';
 import '../about/about_us.dart';
 import '../help/help_screen.dart';
 
-
-
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
+
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
+
 class _SettingsScreenState extends State<SettingsScreen> {
   bool isDark = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +35,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                 Padding(
-                  padding:const EdgeInsets.symmetric(vertical: 8.0),
-                  child:Text(
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
                     'General Settings',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
@@ -60,8 +59,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     backgroundColor: Colors.red,
                   ),
                   title: 'Theme Mode',
-                  subtitle:isDark ? "Dark Mode":'Night Mode',
-                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  subtitle: isDark ? "Dark Mode" : 'Night Mode',
+                  subtitleStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 12, color: Colors.grey),
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
                   trailing: Switch.adaptive(
                     value: isDark,
@@ -76,8 +78,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 SettingsItem(
-                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
-
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.grey,
+                  ),
                   onTap: () {
                     navigate(context, AboutScreen());
                   },
@@ -85,19 +89,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   iconStyle: IconStyle(
                     backgroundColor: Colors.purple,
                   ),
-                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  subtitleStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 12, color: Colors.grey),
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
                   title: 'About Us  ',
                   subtitle: "Know more about us",
                 ),
                 SettingsItem(
-                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.grey,
+                  ),
                   onTap: () {
                     navigate(context, const HelpScreen());
                   },
                   icons: CupertinoIcons.question_circle,
                   iconStyle: IconStyle(),
-                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  subtitleStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 12, color: Colors.grey),
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
                   title: 'Help',
                   subtitle: "Provide more assistance for using the program",
@@ -109,8 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Container(
-                    child:
-                    Text(
+                    child: Text(
                       'Account Setting',
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
@@ -121,27 +133,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 // You can add a settings title
                 SettingsItem(
-                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
-
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.grey,
+                  ),
                   onTap: () {},
                   icons: Icons.exit_to_app_rounded,
                   iconStyle: IconStyle(
-                      iconsColor: Colors.white, backgroundColor: Colors.greenAccent),
+                      iconsColor: Colors.white,
+                      backgroundColor: Colors.greenAccent),
                   title: "Sign out",
-                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  subtitleStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 12, color: Colors.grey),
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
                 ),
                 SettingsItem(
-                  trailing:Icon(Icons.arrow_forward_ios_rounded,color: Colors.grey,) ,
-
+                  trailing: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.grey,
+                  ),
                   onTap: () {},
                   icons: CupertinoIcons.delete_solid,
                   iconStyle: IconStyle(
                       iconsColor: Colors.white, backgroundColor: Colors.red),
                   title: "Delete Account",
-                  subtitleStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 12,color: Colors.grey),
+                  subtitleStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 12, color: Colors.grey),
                   titleStyle: Theme.of(context).textTheme.bodyLarge,
-
                 ),
               ],
             ),

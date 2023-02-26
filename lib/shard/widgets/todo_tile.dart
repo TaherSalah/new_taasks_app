@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
+import 'package:new_task/shard/widgets/navigators.dart';
 
+import '../../screens/edite_notes/edite_notes_screen.dart';
 import '../cubit/cubit.dart';
 import '../../model/todo_model.dart';
 
@@ -156,16 +158,16 @@ class _CardBuilderState extends State<CardBuilder> {
                       flex: 3,
                       icon: Icons.delete_forever_outlined,
                     ),
-                    SlidableAction(
-                      onPressed: ((context) {
-                        setState(() {
-                          cubit.deleteTodo(widget.todoModel);
-                        });
-                      }),
-                      backgroundColor: Colors.green,
-                      flex: 3,
-                      icon: Icons.edit,
-                    )
+                    // SlidableAction(
+                    //   onPressed: ((context) {
+                    //     setState(() {
+                    //       // navigate(context, EditeScreen(notesModel: widget.todoModel,));
+                    //     });
+                    //   }),
+                    //   backgroundColor: Colors.green,
+                    //   flex: 3,
+                    //   icon: Icons.edit,
+                    // )
                   ]),
                   child: ListTile(
                     title: Row(

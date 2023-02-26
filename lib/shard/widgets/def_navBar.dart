@@ -17,7 +17,7 @@ Widget defualtBottomNavigationBar({
         BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 8)
       ],
       duration: const Duration(milliseconds: 500),
-      gap: 16,
+      gap: 5,
       onTabChange: onTabChange,
       selectedIndex: 0,
       backgroundColor: Colors.black,

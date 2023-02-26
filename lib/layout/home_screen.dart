@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
+                    scrollable: true,
                     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                     title:  Center(child: Text('Add Short Task !',style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.amber,fontFamily: 'cairo'),)),
                     icon: Image.asset(
@@ -105,15 +106,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             TextFormField(
                               controller: cubit.titleController,
                               decoration: InputDecoration(
-                                border: OutlineInputBorder(),
+                                border: const OutlineInputBorder(),
                                 labelStyle: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
-                                    .copyWith(fontFamily: 'cairo',fontSize: 16),
+                                    .copyWith(fontFamily: 'cairo',fontSize: 16,),
                                 hintStyle:  Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
                                     .copyWith(fontFamily: 'cairo',fontSize: 16),
+
                                 labelText: 'Task Title',
                                 hintText: 'Enter your Task Title',
                               ),
@@ -125,9 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }
                               },
                             ),
-                            const SizedBox(
-                              height: 14,
-                            ),
+SizedBox(height: 10,),
                             TextFormField(
                               controller: cubit.descriptionController,
                               // minLines: 10,
@@ -152,9 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 }
                               },
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            SizedBox(height: 8,),
+
                             ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor:

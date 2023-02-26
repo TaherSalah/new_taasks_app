@@ -111,6 +111,7 @@ class _AddNotesFormState extends State<AddNotesForm> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: CustomFormField(
+
                   controller: cubit.descriptionController,
                   hint: 'Title Description',
                   maxLines: 10,

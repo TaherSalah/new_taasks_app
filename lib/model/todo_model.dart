@@ -3,9 +3,9 @@ part 'todo_model.g.dart';
 @HiveType(typeId: 1)
 class TodoModel {
    @HiveField(0)
-  final String title;
+   String title;
    @HiveField(1)
-  final String description;
+   String description;
    @HiveField(3)
   final DateTime date;
    @HiveField(4)

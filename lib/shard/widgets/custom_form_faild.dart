@@ -33,8 +33,9 @@ class CustomFormField extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge,
           obscureText: obscureText,
           controller: controller,
+
           enabled: true,
-          keyboardType: TextInputType.text,
+          // keyboardType: TextInputType.text,
           autocorrect: true,
           maxLength: maxLength,
           onSaved: onSaved,

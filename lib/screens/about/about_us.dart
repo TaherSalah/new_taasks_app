@@ -171,97 +171,85 @@ class SocialIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        InkWell(
-          onTap: () {
-            launchUrl(youtube, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/youtube.png',
-              height: 50,
-              width: 50,
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+          InkWell(
+            onTap: () {
+              launchUrl(facebook, mode: LaunchMode.externalApplication);
+            },
+            child: Container(
+              child: Image.asset(
+                'assets/images/facebook.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        InkWell(
-          onTap: () {
-            launchUrl(facebook, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/facebook.png',
-              height: 50,
-              width: 50,
+          SizedBox(
+            width: 6,
+          ),
+          InkWell(
+            onTap: () {
+              launchUrl(linkedin, mode: LaunchMode.externalApplication);
+            },
+            child: Container(
+              child: Image.asset(
+                'assets/images/linkedin.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        InkWell(
-          onTap: () {
-            launchUrl(linkedin, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/linkedin.png',
-              height: 50,
-              width: 50,
+          SizedBox(
+            width: 6,
+          ),
+          InkWell(
+            onTap: () {
+              launchUrl(whatsapp, mode: LaunchMode.externalApplication);
+            },
+            child: Container(
+              child: Image.asset(
+                'assets/images/whatsapp.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        InkWell(
-          onTap: () {
-            launchUrl(whatsapp, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/whatsapp.png',
-              height: 50,
-              width: 50,
+          SizedBox(
+            width: 6,
+          ),
+          InkWell(
+            onTap: () {
+              launchUrl(github, mode: LaunchMode.externalApplication);
+            },
+            child: Container(
+              child: Image.asset(
+                'assets/images/github.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        InkWell(
-          onTap: () {
-            launchUrl(github, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/github.png',
-              height: 50,
-              width: 50,
+          SizedBox(
+            width: 6,
+          ),
+          InkWell(
+            onTap: () {
+              launchUrl(insta, mode: LaunchMode.externalApplication);
+            },
+            child: Container(
+              child: Image.asset(
+                'assets/images/instagram.png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        InkWell(
-          onTap: () {
-            launchUrl(insta, mode: LaunchMode.externalApplication);
-          },
-          child: Container(
-            child: Image.asset(
-              'assets/images/instagram.png',
-              height: 50,
-              width: 50,
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
