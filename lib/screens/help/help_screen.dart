@@ -21,24 +21,14 @@ class HelpScreen extends StatelessWidget {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Expanded(child: myDivider()),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'اولا لإضافة مهمة جديدة',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .bodyLarge,
-                ),
-              ),
-              Expanded(child: myDivider()),
-            ],
-          ),
-
+          Center(
+            child: Container(
+                height: 500,
+                width: 500,
+                child: Image.asset('assets/images/commaing soon.jpg')),
+          )
         ],
       ),
     );
